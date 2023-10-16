@@ -39,7 +39,7 @@ app.get('/query', requiresAuth(), (req, res) => {
     res.json({ query: query });
 })
 
-app.get('/openai',  async (req, res) => {
+app.get('/openai',requiresAuth(),  async (req, res) => {
     try {
         const { query } = req.query;
         if (!query) {
