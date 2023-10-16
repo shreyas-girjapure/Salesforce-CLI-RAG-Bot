@@ -17,7 +17,6 @@ const config = {
     issuerBaseURL: process.env.ISSUER_BASE_URL
 };
 
-
 app.use(auth(config));
 
 // Define a route and send a response
@@ -28,6 +27,14 @@ app.get('/', (req, res) => {
 app.get('/profile', requiresAuth(), (req, res) => {
     res.send(JSON.stringify(req.oidc.user));
 });
+
+app.get('/query', requiresAuth(), (req, res) => {
+    const { query } = req.query;
+    if (!query) {
+        return res.status(400).json({ error: 'Query parameter is required' });
+    }
+    res.json({ query: query });
+})
 app.get('/check', (req, res) => {
     res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
 });
