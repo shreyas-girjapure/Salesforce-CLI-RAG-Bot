@@ -1,8 +1,12 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const { auth } = require('express-openid-connect');
-const { requiresAuth } = require('express-openid-connect');
-
+// const express = require('express');
+// const dotenv = require('dotenv');
+// const { auth } = require('express-openid-connect');
+// const { requiresAuth } = require('express-openid-connect');
+import express from 'express';
+import pkg from 'express-openid-connect';
+const { auth, requiresAuth } = pkg;
+import dotenv from 'dotenv';
+import { getOpenAIResponse } from './langChain/main.js'; // Adjust the path as needed
 
 dotenv.config();
 
@@ -19,7 +23,6 @@ const config = {
 
 app.use(auth(config));
 
-// Define a route and send a response
 app.get('/', (req, res) => {
     res.send('Hello, World!');
 });
@@ -35,6 +38,19 @@ app.get('/query', requiresAuth(), (req, res) => {
     }
     res.json({ query: query });
 })
+
+app.get('/openai',  async (req, res) => {
+    try {
+        const { query } = req.query;
+        if (!query) {
+            return res.status(400).json({ error: 'Query parameter is required' });
+        }
+        const output =  await getOpenAIResponse(query);
+        res.json({ response: output });
+    } catch (error) {
+        res.status(500).json({ error: 'An error occurred' });
+    }
+});
 app.get('/check', (req, res) => {
     res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
 });
