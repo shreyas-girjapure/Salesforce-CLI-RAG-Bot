@@ -36,19 +36,23 @@ app.get('/query', requiresAuth(), (req, res) => {
     if (!query) {
         return res.status(400).json({ error: 'Query parameter is required' });
     }
-    res.json({ query: query });
+    res.json({ query: query, });
 })
 
-app.get('/openai',requiresAuth(),  async (req, res) => {
+app.get('/openai', requiresAuth(), async (req, res) => {
     try {
-        const { query } = req.query;
+        let { query, nItems } = req.query;
         if (!query) {
             return res.status(400).json({ error: 'Query parameter is required' });
         }
-        const output =  await getOpenAIResponse(query);
+        if (!nItems) {
+            nItems = 1;
+        }
+        const output = await getOpenAIResponse(query, nItems);
         res.json({ response: output });
     } catch (error) {
-        res.status(500).json({ error: 'An error occurred' });
+        console.log(error);
+        res.status(500).send(JSON.stringify(error));
     }
 });
 app.get('/check', (req, res) => {
