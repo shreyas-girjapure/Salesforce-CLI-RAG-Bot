@@ -50,7 +50,9 @@ app.get('/openai', requiresAuth(), async (req, res) => {
         }
         const output = await getOpenAIResponse(query, nItems);
         let pageContent = output[0].pageContent;
-        res.send(`<pre>${pageContent}</pre>`);
+        console.log('the string'+JSON.stringify(pageContent))
+        const escapedText = pageContent.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        res.send(`<pre>${escapedText}</pre>`);
     } catch (error) {
         console.log(error);
         res.status(500).send(JSON.stringify(error));
