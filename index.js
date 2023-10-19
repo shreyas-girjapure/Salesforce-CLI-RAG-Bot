@@ -49,7 +49,8 @@ app.get('/openai', requiresAuth(), async (req, res) => {
             nItems = 1;
         }
         const output = await getOpenAIResponse(query, nItems);
-        res.json({ response: output });
+        let pageContent = output[0].pageContent;
+        res.send(`<pre>${pageContent}</pre>`);
     } catch (error) {
         console.log(error);
         res.status(500).send(JSON.stringify(error));
