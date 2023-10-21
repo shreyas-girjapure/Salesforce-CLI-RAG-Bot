@@ -6,7 +6,7 @@ import express from 'express';
 import pkg from 'express-openid-connect';
 const { auth, requiresAuth } = pkg;
 import dotenv from 'dotenv';
-import { handleVectorSearchRaw, isRelatedToSalesforceCLI, formatRawResult } from './langChain/main.js'; // Adjust the path as needed
+import { handleVectorSearchRaw, isRelatedToSalesforceCLI, formatRawResult, handleVectorSearchFormatted } from './langChain/main.js'; // Adjust the path as needed
 
 dotenv.config();
 
@@ -48,7 +48,7 @@ app.get('/search', async (req, res) => {
         if (!nItems) {
             nItems = 1;
         }
-        const searchResult = await handleVectorSearch(query, nItems);
+        const searchResult = await handleVectorSearchFormatted(query, nItems);
         res.send(searchResult);
 
     } catch (error) {
