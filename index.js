@@ -6,7 +6,7 @@ import express from 'express';
 import pkg from 'express-openid-connect';
 const { auth, requiresAuth } = pkg;
 import dotenv from 'dotenv';
-import { getOpenAIResponse } from './langChain/main.js'; // Adjust the path as needed
+import { handleVectorSearchRaw, isRelatedToSalesforceCLI, formatRawResult } from './langChain/main.js'; // Adjust the path as needed
 
 dotenv.config();
 
@@ -31,7 +31,7 @@ app.get('/profile', requiresAuth(), (req, res) => {
     res.send(JSON.stringify(req.oidc.user));
 });
 
-app.get('/query', requiresAuth(), (req, res) => {
+app.get('/query', (req, res) => {
     const { query } = req.query;
     if (!query) {
         return res.status(400).json({ error: 'Query parameter is required' });
@@ -39,7 +39,7 @@ app.get('/query', requiresAuth(), (req, res) => {
     res.json({ query: query, });
 })
 
-app.get('/openai', requiresAuth(), async (req, res) => {
+app.get('/search', async (req, res) => {
     try {
         let { query, nItems } = req.query;
         if (!query) {
@@ -48,11 +48,33 @@ app.get('/openai', requiresAuth(), async (req, res) => {
         if (!nItems) {
             nItems = 1;
         }
-        const output = await getOpenAIResponse(query, nItems);
-        let pageContent = output[0].pageContent;
-        console.log('the string'+JSON.stringify(pageContent))
-        const escapedText = pageContent.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-        res.send(`<pre>${escapedText}</pre>`);
+        const searchResult = await handleVectorSearch(query, nItems);
+        res.send(searchResult);
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(JSON.stringify(error));
+    }
+});
+
+app.get('/super-search', async (req, res) => {
+    try {
+        let { query } = req.query;
+        if (!query) {
+            return res.status(400).json({ error: 'Query parameter is required' });
+        }
+        const nItems = req.query.nItems || 1;
+        const vectorResult = await handleVectorSearchRaw(query, nItems);
+
+        const isRelated = await isRelatedToSalesforceCLI(query, vectorResult);
+        if (!isRelated) {
+            return res.status(400).json({ error: 'Please ask questions related to salesforce CLI Or Rephrase your query' });
+        }
+        if (isRelated) {
+            let output = await formatRawResult(vectorResult);
+            res.send(`<pre>${output}</pre>`);
+        }
+
     } catch (error) {
         console.log(error);
         res.status(500).send(JSON.stringify(error));
