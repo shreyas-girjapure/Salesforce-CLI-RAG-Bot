@@ -1,16 +1,11 @@
-// const express = require('express');
-// const dotenv = require('dotenv');
-// const { auth } = require('express-openid-connect');
-// const { requiresAuth } = require('express-openid-connect');
 import express from 'express';
 import pkg from 'express-openid-connect';
 const { auth, requiresAuth } = pkg;
 import dotenv from 'dotenv';
-import { handleVectorSearchRaw, isRelatedToSalesforceCLI, formatRawResult, handleVectorSearchFormatted } from './langChain/main.js'; // Adjust the path as needed
+import { handleVectorSearchRaw, isRelatedToSalesforceCLI, formatRawResult, handleVectorSearchFormatted ,answerNonRelatedQuestion } from './langChain/main.js';
 
 dotenv.config();
 
-// Create an Express application
 const app = express();
 const config = {
     authRequired: false,
@@ -68,7 +63,9 @@ app.get('/super-search', async (req, res) => {
 
         const isRelated = await isRelatedToSalesforceCLI(query, vectorResult);
         if (!isRelated) {
-            return res.status(400).json({ error: 'Please ask questions related to salesforce CLI Or Rephrase your query' });
+            let outputUnformatted = await answerNonRelatedQuestion(query);
+            let output = formatRawResult(outputUnformatted);
+            return res.send(output);
         }
         if (isRelated) {
             let output = await formatRawResult(vectorResult);
@@ -84,7 +81,6 @@ app.get('/check', (req, res) => {
     res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
 });
 
-// Start the server on port 3000
 const port = 3000;
 app.listen(port, () => {
     console.log(`Server is running on :${port}`);

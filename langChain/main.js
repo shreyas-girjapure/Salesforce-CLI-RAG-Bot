@@ -9,21 +9,18 @@ export async function getVectorSearchResult(text, numberOfResults) {
 }
 
 export async function isRelatedToSalesforceCLI(text, vectorContext) {
-    // let promptText = `question:${text}. Is the question asked related to salesforce or programming, Say Yes if it is related else No ? `
-    let promptText = `question:${text}.
+    let promptText = `You are an expert programmer and problem-solver, tasked with answering any question about Salesforce and Salesforce. 
+    question:${text}.
     context:${vectorContext}.
-    Is context and question related, Say Yes if it is related else No ?`
+    Is context provided above meaningfully relevant to the question asked, Say Yes if it is related else No ?`
     let result = await model.call(promptText);
     return result == 'Yes';
 }
-
-export async function getOpenAiResponse(text, vectorResultContext) {
-    let promptText = `question:${text}
-
-    context:${vectorResultContext}
-    
-    Based on question and context. Please provide relevant answer.
-    Tell answer only if question is related to context provided , else say question is not related to salesforce.
+export async function answerNonRelatedQuestion(questionText) {
+    let promptText = `You are an expert programmer and problem-solver, tasked with answering any question about Salesforce and Salesforce CLI. 
+    Generate a comprehensive and informative answer of 80 words or less for the given question.
+    question:${questionText}.
+    Always use bullet points in your answer for readability.
     `
     let result = await model.call(promptText);
     return result;
@@ -38,7 +35,6 @@ export async function handleVectorSearchFormatted(query, nItems) {
     }
     const output = await getVectorSearchResult(query, nItems);
     const pageContent = output[0].pageContent;
-    console.log('the string' + JSON.stringify(pageContent));
     const escapedText = pageContent.replace(/</g, '&lt;').replace(/>/g, '&gt;');
     return `<pre>${escapedText}</pre>`;
 };
@@ -54,7 +50,7 @@ export async function handleVectorSearchRaw(query, nItems) {
 
     return pageContent;
 };
-export async function formatRawResult(rawVectorResult) {
+export function formatRawResult(rawVectorResult) {
     const output = rawVectorResult;
     const escapedText = output.replace(/</g, '&lt;').replace(/>/g, '&gt;');
     return `<pre>${escapedText}</pre>`;
