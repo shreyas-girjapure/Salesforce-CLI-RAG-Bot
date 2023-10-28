@@ -54,8 +54,15 @@ There are 2 search routes available.
     1. No* Rate Limits.
 
 ## How to Use
-For now there is no UI available for access. Feel free to contribute a UI layer for this.
 
+### Front end
+
+- Visit [RAG Bot Page](https://shreyas-girjapure.github.io/Salesforce-CLI-RAG-Bot/).
+- Use this page for searching for salesforce cli document related queries.
+
+        Note : Backend is hosted on free tier server. You might face delayed responses due to `cold-start` time. 
+
+### Backend
 ### Base API endpoint URL : `https://basicauth-znr4.onrender.com/`
 
 ### `super-search` : LLM powered vector search
@@ -83,7 +90,8 @@ For now there is no UI available for access. Feel free to contribute a UI layer 
 
 ## Next in line features  
 ### Priority 1
-1. Add UI support.
+1. ~~Add UI support~~.
+1. Enhance search result output.
 1. Add env variables for models
 1. Remove unnecessary lines of code.
 1. Add referenced from links of web documentation pages.
@@ -92,7 +100,7 @@ For now there is no UI available for access. Feel free to contribute a UI layer 
 ### Priority 2
 1. Add documentation for `How dataset was embedded ?`
 1. Add documentation for `What strategies were used ?`
-1. Ability to Update dataset base
+1. Ability to Update dataset
 1. Automate update dataset.
 1. Maybe create a cli `sfdx plugin` for semantic search
 1. Use local LLM for low cost implementation
