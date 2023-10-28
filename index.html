@@ -10,7 +10,7 @@
     <title>Salesforce CLI Documentation</title>
 </head>
 
-<body class="bg-light">
+<body class="bg-light dark-mode">
     <div class="container">
         <!-- Dark Mode Switch -->
         <div class="custom-control custom-switch">
@@ -20,10 +20,10 @@
 
         <!-- Search Section -->
         <div class="my-4">
-            <h2>Search CLI Documentation 🚀</h2>
-            <div class="form-group">
-                <label for="query">Search Commands</label>
-                <input type="text" class="form-control" id="query" placeholder="Type your query here">
+            <h2>Search CLI Docs 🚀</h2>
+            <div class="form-group mt-4">
+                <label for="query">Search</label>
+                <input type="text" class="form-control" id="query" placeholder="Type your search query here ...">
             </div>
             <button class="btn btn-primary btn-block" id="searchBtn">Search</button>
             <div class="loading-spinner">
@@ -31,9 +31,8 @@
             </div>
         </div>
 
-        <!-- API Response Container (Initially Hidden) -->
         <div class="my-4" style="display: none;" id="resultContainer">
-            <h4>Result</h4>
+            <p>Result</p>
             <pre id="response" class="border p-3 response-container"></pre>
             <div id="noResponseMessage" class="d-none">
                 <h4>No response provided.</h4>
