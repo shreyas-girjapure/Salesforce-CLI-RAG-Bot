@@ -44,6 +44,8 @@ There are 2 search routes available.
     1. Has LLM's support for guessing if question is related to dataset used.
     1. Has cost of LLM's tokenization.
     1. Relatively Slow and has rate limits.
+    1. `Requests Per Min : 3,500`
+    1. `Tokens Per Min : 90,000`
 1. `search` 
     1. Direct search on vector store.
     1. No LLM layer
@@ -101,13 +103,21 @@ For now there is no UI available for access. Feel free to contribute a UI layer 
 1. Understanding your own dataset is really important before choosing approach for RAG bot. 
 1. Adding chat bot layer over large documents will only improve current businesses and user experiences.
 
-## Limitations 
+## Limitations and NFRs
 1. Free Server has cold start issues.
 1. No Rate guards are placed in code , prone to credit loss or server crashes.
+    1. `RPM : 3,500`        
+    1. `TPM : 90,000` 
 1. Since documentations has 2 sections of same semantic commands , deprecated commands may be retrieved.
     1. Example : When you search for `How to login`, vector search might retrieve 
     `auth web login` section or  `sfdx force auth web login`.
     1. Similarly for deploy commands and other similar commands from `sf` and `sfdx` section.
+1. `Requests Per Minute : 3,500`
+    1. Current implementation does not involve agent-ish implementations , so RPM should be hard to hit given project scale.       
+1. `Tokens Per Minute  : 90,000`
+    1. Single requests cost around 1000-3000 tokens , So to exhaust daily limits
+    more than 30 requests have to be made in a minute.
+
 
 ## References
 1. [RAG](https://www.hopsworks.ai/dictionary/retrieval-augmented-generation-llm#:~:text=Retrieval%2Daugmented%20generation%20(RAG),%2C%20and%20recent%2Frelevant%20dataset.)
