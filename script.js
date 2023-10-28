@@ -6,7 +6,7 @@ const queryInput = document.getElementById('query');
 const searchBtn = document.getElementById('searchBtn');
 const loadingSpinner = document.querySelector('.loading-spinner');
 const darkModeIcon = document.getElementById('darkModeIcon');
-
+const baseUrl = 'https://basicauth-znr4.onrender.com/';
 let isDarkMode = false;
 
 darkModeSwitch.addEventListener('change', () => {
@@ -28,7 +28,7 @@ function performSearch() {
     // Hide result container when making a new search
     resultContainer.style.display = 'none';
 
-    fetch(`http://localhost:3000/search?query=${encodeURIComponent(query)}`)
+    fetch(`${baseUrl}/search?query=${encodeURIComponent(query)}`)
         .then(response => response.text())
         .then(data => {
             responseContainer.innerHTML = data;
