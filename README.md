@@ -13,7 +13,7 @@ There are some major issues in search results depending RAG strategy and dataset
 1. LLM's layer
     1. LLM some times add their own flavors `[hallucinations]` on vectored context provided.
 
-So by avoiding standard split and embed approaches and fine tuning the dataset , Better results can be achieved.
+So by avoiding standard split and embed approaches and fine controlling the dataset , Better results can be achieved.
 
 This project is implementation of such finely controlled dataset's RAG strategy.
 
