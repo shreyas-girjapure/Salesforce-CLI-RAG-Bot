@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Salesforce CLI Documentation</title>
+</head>
+
+<body class="bg-light">
+    <div class="container">
+        <!-- Dark Mode Switch -->
+        <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="darkModeSwitch">
+            <label class="custom-control-label" for="darkModeSwitch"><i id="darkModeIcon" class="fas"></i></label>
+        </div>
+
+        <!-- Search Section -->
+        <div class="my-4">
+            <h2>Search CLI Documentation 🚀</h2>
+            <div class="form-group">
+                <label for="query">Search Commands</label>
+                <input type="text" class="form-control" id="query" placeholder="Type your query here">
+            </div>
+            <button class="btn btn-primary btn-block" id="searchBtn">Search 🔍</button>
+            <div class="loading-spinner">
+                <i class="fas fa-spinner fa-spin"></i> Loading...
+            </div>
+        </div>
+
+        <!-- API Response Container (Initially Hidden) -->
+        <div class="my-4" style="display: none;" id="resultContainer">
+            <h4>Result</h4>
+            <pre id="response" class="border p-3 response-container"></pre>
+            <div id="noResponseMessage" class="d-none">
+                <h4>No response provided.</h4>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script> <!-- Link to the external JavaScript file -->
+</body>
+
+</html>

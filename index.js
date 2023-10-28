@@ -2,6 +2,7 @@ import express from 'express';
 import pkg from 'express-openid-connect';
 const { auth, requiresAuth } = pkg;
 import dotenv from 'dotenv';
+import cors from 'cors';
 import { handleVectorSearchRaw, isRelatedToSalesforceCLI, formatRawResult, handleVectorSearchFormatted, answerNonRelatedQuestion } from './langChain/main.js';
 
 
@@ -18,6 +19,7 @@ const config = {
 };
 
 app.use(auth(config));
+app.use(cors());
 
 app.get('/', (req, res) => {
     res.redirect('https://github.com/shreyas-girjapure/Salesforce-CLI-RAG-Bot#readme')
