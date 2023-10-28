@@ -60,7 +60,7 @@ There are 2 search routes available.
 - Visit [RAG Bot Page](https://shreyas-girjapure.github.io/Salesforce-CLI-RAG-Bot/).
 - Use this page for searching for salesforce cli document related queries.
 
-        Note : Backend is hosted on free tier server. You might face delayed responses due to `cold-start` time. 
+**Note : Backend is hosted on free tier server. You might face delayed responses due to `cold-start` time**
 
 ### Backend
 ### Base API endpoint URL : `https://basicauth-znr4.onrender.com/`
