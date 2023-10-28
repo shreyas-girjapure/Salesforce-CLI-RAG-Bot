@@ -43,12 +43,13 @@ There are 2 search routes available.
 1. `super-search`
     1. Has LLM's support for guessing if question is related to dataset used.
     1. Has cost of LLM's tokenization.
-    1. Relatively Slow and has token limits.
+    1. Relatively Slow and has rate limits.
 1. `search` 
     1. Direct search on vector store.
     1. No LLM layer
     1. Faster response time.
     1. Only has query embedding cost.
+    1. No* Rate Limits.
 
 ## How to Use
 For now there is no UI available for access. Feel free to contribute a UI layer for this.
@@ -60,22 +61,23 @@ For now there is no UI available for access. Feel free to contribute a UI layer 
 1. parameters
     1. `query`
 1. Examples 
-    1. `https://basicauth-znr4.onrender.com/super-search?query=How to logout of org`
-    1. `https://basicauth-znr4.onrender.com/super-search?query=How to deploy metadata`
+    1. `https://basicauth-znr4.onrender.com/super-search?query=How%20to%20logout%20of%20org`
+    1. `https://basicauth-znr4.onrender.com/super-search?query=how%20to%20deploy%20metadata`
 
-### `search` : simple semantic vector search
+### `search` : Simple semantic vector search
 1. URL : `https://basicauth-znr4.onrender.com/search`
 1. parameters
     1. `query`
 1. Examples 
-    1. `https://basicauth-znr4.onrender.com/search?query=How to logout of org`
-    1. `https://basicauth-znr4.onrender.com/search?query=How to deploy metadata`
+    1. `https://basicauth-znr4.onrender.com/search?query=How%20to%20logout%20of%20org`
+    1. `https://basicauth-znr4.onrender.com/search?query=how%20to%20deploy%20metadata`
 
 ## Features
 1. Understands semantics of both question and files used aka `Vector Search`.
 1. Super processed data set for HIGHLY accurate search results.
 1. Answers* unrelated questions to the context used.
 1. Has support to load local vector stores for faster retrieval.
+1. LLM Monitor support for analytics
 
 ## Next in line features  
 ### Priority 1
@@ -83,6 +85,7 @@ For now there is no UI available for access. Feel free to contribute a UI layer 
 1. Add env variables for models
 1. Remove unnecessary lines of code.
 1. Add referenced from links of web documentation pages.
+1. Remove deprecated commands from dataset used.
 
 ### Priority 2
 1. Add documentation for `How dataset was embedded ?`
@@ -92,11 +95,19 @@ For now there is no UI available for access. Feel free to contribute a UI layer 
 1. Maybe create a cli `sfdx plugin` for semantic search
 1. Use local LLM for low cost implementation
 
-### AI Awareness section
+## AI Awareness section
 1. This is more of a hands on product and an implementations of some POCs.
 1. AI is not magic , lot of guard rails and code alterations are needed to have a useful AI bot which doesn't hallucinates much.
 1. Understanding your own dataset is really important before choosing approach for RAG bot. 
 1. Adding chat bot layer over large documents will only improve current businesses and user experiences.
+
+## Limitations 
+1. Free Server has cold start issues.
+1. No Rate guards are placed in code , prone to credit loss or server crashes.
+1. Since documentations has 2 sections of same semantic commands , deprecated commands may be retrieved.
+    1. Example : When you search for `How to login`, vector search might retrieve 
+    `auth web login` section or  `sfdx force auth web login`.
+    1. Similarly for deploy commands and other similar commands from `sf` and `sfdx` section.
 
 ## References
 1. [RAG](https://www.hopsworks.ai/dictionary/retrieval-augmented-generation-llm#:~:text=Retrieval%2Daugmented%20generation%20(RAG),%2C%20and%20recent%2Frelevant%20dataset.)

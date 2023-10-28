@@ -2,7 +2,8 @@ import express from 'express';
 import pkg from 'express-openid-connect';
 const { auth, requiresAuth } = pkg;
 import dotenv from 'dotenv';
-import { handleVectorSearchRaw, isRelatedToSalesforceCLI, formatRawResult, handleVectorSearchFormatted ,answerNonRelatedQuestion } from './langChain/main.js';
+import { handleVectorSearchRaw, isRelatedToSalesforceCLI, formatRawResult, handleVectorSearchFormatted, answerNonRelatedQuestion } from './langChain/main.js';
+
 
 dotenv.config();
 
@@ -19,7 +20,7 @@ const config = {
 app.use(auth(config));
 
 app.get('/', (req, res) => {
-    res.send('Hello, World!');
+    res.redirect('https://github.com/shreyas-girjapure/Salesforce-CLI-RAG-Bot#readme')
 });
 
 app.get('/profile', requiresAuth(), (req, res) => {
@@ -77,6 +78,7 @@ app.get('/super-search', async (req, res) => {
         res.status(500).send(JSON.stringify(error));
     }
 });
+
 app.get('/check', (req, res) => {
     res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
 });
