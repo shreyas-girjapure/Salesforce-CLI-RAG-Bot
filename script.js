@@ -29,7 +29,7 @@ function performSearch() {
     // Hide result container when making a new search
     resultContainer.style.display = 'none';
 
-    fetch(`${baseUrl}/search?query=${encodeURIComponent(query)}`)
+    fetch(`${baseUrl}/super-search?query=${encodeURIComponent(query)}`)
         .then(response => response.text())
         .then(data => {
             responseContainer.innerHTML = data;
