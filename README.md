@@ -1,23 +1,36 @@
-# Salesforce CLI RAG Bot - Chat with your documents using AI
+# Salesforce CLI Command Search RAG Bot - Chat with your documents using AI
 
-## Project Overview
+## Overview 
+Document search implementations generally involve
+1. Data Splitting 
+1. Embedding
+1. Storing in Vector DB
+1. Retrieving with LLM's layer for summary.
 
-### Problem Statement 
-1. Simple chunking content and putting in vector db gives hallucinated results. Wanted to improve searches on dataset and use efficient retrieval.
-1. Just Cant remember `DX commands` and their examples.
+There are some major issues in search results depending RAG strategy and dataset used. Below are some areas involved in result inaccuracy.
+1. Data splitting
+    1. Chunked data may lose important context for the query and retrieval of such data generates bad results in final outcome.
+1. LLM's layer
+    1. LLM some times add their own flavors `[hallucinations]` on vectored context provided.
+
+So by avoiding standard split and embed approaches and fine tuning the dataset , Better results can be achieved.
+
+This project is implementation of such finely controlled dataset's RAG strategy.
+
+    Tip : You can create simple AI powered bots using low code tools like 
+        1. RelevanceAI
+        1. Flowise
+
+## Problem Statement / Motivations
+1. Overcome inaccuracy of simple RAG strategy and provide accurate results.  
 1. Always wanted a personal AI powered `RAG bot`.
 1. Wanted to implement lang-chain concepts. Understand AI hype better.
 
-### Existing ways to do this [Find CLI commands you need]
+## Existing ways to do this [Find CLI commands you need]
 1. Actually read through [Salesforce CLI Reference Documentation](https://resources.docs.salesforce.com/246/latest/en-us/sfdc/pdf/sfdx_CLI_reference.pdf)
 1. Use `sfdx search` command for keyword searching commands.
 
-### Overview 
-This is a simple [Lang-Chain JS](https://js.langchain.com/docs/get_started) based RAG implementation. Using locally stored `FaissStore` as vector database for semantic retrieval.
-
-dataset / document chosen for implementation is [Salesforce CLI Reference Documentation](https://resources.docs.salesforce.com/246/latest/en-us/sfdc/pdf/sfdx_CLI_reference.pdf).
-
-#### Implementation overview
+## Implementation overview
 1. Embedded `SFDX CLI documentation` using openAi's embedding model.
 1. LLM model `gpt-3.5-turbo`
 1. Embedding model `text-embedding-ada-002` 
