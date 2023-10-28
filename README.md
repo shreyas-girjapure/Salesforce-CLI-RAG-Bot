@@ -90,6 +90,7 @@ There are 2 search routes available.
 ## Next in line features  
 ### Priority 1
 1. ~~Add UI support~~.
+1. Add github links and readme on frontend.
 1. Enhance search result output.
 1. Add env variables for models
 1. Remove unnecessary lines of code.
