@@ -21,6 +21,7 @@ function updateDarkModeIcon() {
 
 function performSearch() {
     const query = queryInput.value;
+    console.log('here s url '+`${baseUrl}/search?query=${encodeURIComponent(query)}`);
     responseContainer.innerHTML = '';
     noResponseMessage.style.display = 'none';
     loadingSpinner.style.display = 'block'; // Show loading spinner
@@ -48,7 +49,7 @@ searchBtn.addEventListener('click', performSearch);
 
 // Add event listener for Enter key press
 queryInput.addEventListener('keyup', (event) => {
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter') {        
         performSearch();
     }
 });
