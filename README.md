@@ -9,7 +9,7 @@ Document search implementations generally involve
 
 There are some major issues in search results depending RAG strategy and dataset used. Below are some areas involved in result inaccuracy.
 1. Data splitting
-    1. Chunked data may lose important context for the query and retrieval of such data generates bad results in final outcome.
+    1. Chunked data may lose important context for the query. Retrieval of such data generates bad results in final outcome.
 1. LLM's layer
     1. LLM some times add their own flavors `[hallucinations]` on vectored context provided.
 
