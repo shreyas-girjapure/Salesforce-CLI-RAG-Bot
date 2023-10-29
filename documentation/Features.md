@@ -10,6 +10,7 @@
 1. Add documentation for `What strategies were used ?`
 1. Ability to Update dataset
 1. Automate update dataset.
+1. Add demo of `how to use the app?`
 
 ### Backend
 1. Remove deprecated commands from dataset used.
