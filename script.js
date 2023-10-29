@@ -6,7 +6,7 @@ const queryInput = document.getElementById('query');
 const searchBtn = document.getElementById('searchBtn');
 const loadingSpinner = document.querySelector('.loading-spinner');
 const darkModeIcon = document.getElementById('darkModeIcon');
-const baseUrl = 'http://localhost:3000';
+const baseUrl = 'https://basicauth-znr4.onrender.com';
 let isDarkMode = false;
 
 darkModeSwitch.addEventListener('change', () => {
