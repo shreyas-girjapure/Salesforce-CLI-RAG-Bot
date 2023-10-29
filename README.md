@@ -34,7 +34,7 @@ This project is implementation of such finely controlled dataset's RAG strategy.
 1. Embedded `SFDX CLI documentation` using openAi's embedding model.
 1. LLM model `gpt-3.5-turbo`
 1. Embedding model `text-embedding-ada-002` 
-1. Stored `Faiss` store for retrieval.
+1. Stored in `Faiss` vector store for retrieval.
 1. added LLM layer for decision making and presentation.
 1. `express` as web server.
 
