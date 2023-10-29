@@ -81,7 +81,7 @@ There are 2 search routes available.
     1. `https://basicauth-znr4.onrender.com/search?query=how%20to%20deploy%20metadata`
 
 ## Features
-1. Understands semantics of both question and files used aka `Vector Search`.
+1. Understands semantics of both question and files used aka `Embedding and Vector Search`.
 1. Super processed data set for HIGHLY accurate search results.
 1. Answers* unrelated questions to the context used.
 1. Has support to load local vector stores for faster retrieval.
