@@ -13,6 +13,8 @@
 
 ### Backend
 1. Remove deprecated commands from dataset used.
+1. Add Tags to model. For enhanced observability.
+1. Whitelist cors url
 1. Add env variables for models
 1. Remove unnecessary lines of code.
 1. Maybe create a cli `sfdx plugin` for semantic search
