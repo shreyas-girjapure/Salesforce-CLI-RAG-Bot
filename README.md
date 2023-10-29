@@ -43,7 +43,7 @@ This project is implementation of such finely controlled dataset's RAG strategy.
 1. Answers* unrelated questions to the context used.
 1. Has support to load local vector stores for faster retrieval.
 1. `LLM Monitor` support for token and LLM analytics.
-1. `0.5` seconds for Salesforce CLI Document related searches.
+1. Around `0.5` seconds for Salesforce CLI Document related searches.
 1. `5+` seconds for Non Salesforce CLI Document related searches.
 
 ## AI Awareness section
