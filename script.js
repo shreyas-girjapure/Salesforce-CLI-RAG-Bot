@@ -6,7 +6,7 @@ const queryInput = document.getElementById('query');
 const searchBtn = document.getElementById('searchBtn');
 const loadingSpinner = document.querySelector('.loading-spinner');
 const darkModeIcon = document.getElementById('darkModeIcon');
-const baseUrl = 'https://basicauth-znr4.onrender.com';
+const baseUrl = 'http://localhost:3000';
 let isDarkMode = false;
 
 darkModeSwitch.addEventListener('change', () => {
@@ -24,16 +24,14 @@ function performSearch() {
     console.log('here s url '+`${baseUrl}/super-search?query=${encodeURIComponent(query)}`);
     responseContainer.innerHTML = '';
     noResponseMessage.style.display = 'none';
-    loadingSpinner.style.display = 'block'; // Show loading spinner
+    loadingSpinner.style.display = 'block';
 
-    // Hide result container when making a new search
     resultContainer.style.display = 'none';
 
     fetch(`${baseUrl}/super-search?query=${encodeURIComponent(query)}`)
         .then(response => response.text())
         .then(data => {
             responseContainer.innerHTML = data;
-            // Show the result container when you have a response
             resultContainer.style.display = 'block';
         })
         .catch(error => {
@@ -41,7 +39,7 @@ function performSearch() {
             noResponseMessage.style.display = 'block';
         })
         .finally(() => {
-            loadingSpinner.style.display = 'none'; // Hide loading spinner
+            loadingSpinner.style.display = 'none';
         });
 }
 
