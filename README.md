@@ -47,14 +47,14 @@ This project is implementation of such finely controlled dataset's RAG strategy.
 1. `5+` seconds for Non Salesforce CLI Document related searches.
 
 ## AI Awareness section
-1. This is more of a hands on product and an implementations of some POCs.
 1. AI is not magic , lot of guard rails and code alterations are needed to have a useful AI bot which doesn't hallucinates much.
 1. Understanding your own dataset is really important before choosing approach for RAG bot. 
 1. Adding chat bot layer over large documents will only improve current businesses and user experiences.
+1. This is a simple lang chain based implementation of some AI concepts. Lots of improvements are needed. Feel free to contribute 🥳
 
 ## Limitations
-1. Free Server has cold start issues. May face delays in searches.
-1. No Rate guards are placed in code , prone to credit loss or server crashes.
+1. Free Server has cold start issues. May face delays in searches due to server inactivity.
+1. No Rate guards are placed in code , prone to credit loss or server crashes 😭.
     1. `RPM : 3,500`        
     1. `TPM : 90,000` 
 1. Since documentations has 2 sections of same semantic commands , deprecated commands may be retrieved.
@@ -66,7 +66,7 @@ This project is implementation of such finely controlled dataset's RAG strategy.
 1. `Allowed Tokens Per Minute  : 90,000`
     1. Single requests cost around 1000-3000 tokens , So to exhaust daily limits
     more than 30 requests have to be made in a minute.
-1. UI Is very poorly designed 😑.
+1. UI is very poorly designed 😑.
 
 
 ## References
