@@ -72,7 +72,7 @@ app.get('/super-search', async (req, res) => {
         }
         if (isRelated) {
             let output = await formatRawResult(vectorResult);
-            res.send(`<pre>${output}</pre>`);
+            res.send(output);
         }
 
     } catch (error) {
