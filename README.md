@@ -13,20 +13,20 @@ There are some major inaccuracies in search results depending RAG strategy and d
 1. Data splitting
     1. Chunked data may lose important context for the query. Retrieval of such data generates bad results in final outcome.
 1. LLM's layer
-    1. LLM some times add their own flavors `[hallucinations]` on vectored context provided.
+    1. LLM some times add their own flavors `hallucinations` on vectored context provided.
 
-So by avoiding standard split and embed approaches and fine controlling the dataset , Better results can be achieved.
+So by avoiding standard `split and embed` approaches and fine controlling the dataset , Better results can be achieved.
 
 This project is implementation of such finely controlled dataset's RAG strategy.
 
-    Tip : You can easily create simple AI powered bots using low code tools like 
+    Tip : You can easily create and host simple AI powered bots using low code tools like 
         1. RelevanceAI
         1. Flowise
 
 ## Problem Statement / Motivations
 1. Overcome inaccuracy of simple RAG strategy and provide accurate results.  
 1. Implement concepts like `RAG` , `Vector DB` , `LLM Monitoring` using lang-chain JS.
-1. Always wanted a personal AI powered `RAG bot`.
+1. Always wanted a personal AI powered `RAG bot` 😁.
 
 ## Existing ways to do this [Find CLI commands you need]
 1. Actually read through [Salesforce CLI Reference Documentation](https://resources.docs.salesforce.com/246/latest/en-us/sfdc/pdf/sfdx_CLI_reference.pdf)
@@ -50,7 +50,7 @@ This project is implementation of such finely controlled dataset's RAG strategy.
 1. Understanding your own dataset is really important before choosing approach for RAG bot. 
 1. Adding chat bot layer over large documents will only improve current businesses and user experiences.
 
-## Limitations and NFRs
+## Limitations
 1. Free Server has cold start issues. May face delays in searches.
 1. No Rate guards are placed in code , prone to credit loss or server crashes.
     1. `RPM : 3,500`        
@@ -64,6 +64,7 @@ This project is implementation of such finely controlled dataset's RAG strategy.
 1. `Allowed Tokens Per Minute  : 90,000`
     1. Single requests cost around 1000-3000 tokens , So to exhaust daily limits
     more than 30 requests have to be made in a minute.
+1. UI Is very poorly designed 😑.
 
 
 ## References
