@@ -45,12 +45,10 @@ function performSearch() {
 
 searchBtn.addEventListener('click', performSearch);
 
-// Add event listener for Enter key press
 queryInput.addEventListener('keyup', (event) => {
     if (event.key === 'Enter') {        
         performSearch();
     }
 });
 
-// Set the initial dark mode icon
 updateDarkModeIcon();
