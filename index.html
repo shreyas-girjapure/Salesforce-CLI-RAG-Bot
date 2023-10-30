@@ -13,50 +13,44 @@
     <title>Salesforce CLI Documentation</title>
 </head>
 
-<body class="">
+<body class="darkModeRoot">
     <div class="slds-p-around_xx-large">
-
         <div class="slds-grid">
             <div class="slds-col">
                 <span class="slds-text-heading_large">Search CLI Docs 🚀</span>
             </div>
             <div class="slds-col">
-                <button
+                <button id="dark-mode-switch"
                     class="slds-float_right slds-m-left_xx-small slds-button slds-button_icon slds-button_icon-medium slds-button_icon-border-filled">
-                    <i class="fa-solid fa-sun"></i>
+                    <i id="dark-icon" class="fa-solid fa-moon"></i>
                 </button>
-                <button
-                    class="slds-float_right slds-button slds-button_icon slds-button_icon-medium slds-button_icon-border-filled">
-                    <i class="fa-solid fa-moon"></i>
-                </button>
-                <button
+                <a href="https://github.com/shreyas-girjapure/Salesforce-CLI-RAG-Bot" target="_blank"
                     class="slds-float_right slds-button slds-button_icon slds-button_icon-medium slds-button_icon-border-filled">
                     <i class="fa-brands fa-github"></i>
-                </button>
+                </a>
             </div>
         </div>
 
         <div class="slds-form-element">
-            <label class="slds-form-element__label slds-m-top_xx-small" id="inline-text-label">Search</label>
+            <div class="slds-m-top_xx-small" id="inline-text-label">Search</div>
             <div class="slds-form-element__control">
-                <input id="query" type="text" placeholder="Type your inputs here" class="slds-input" aria-invalid="true" />
+                <input id="query" type="text" placeholder="Type your inputs here" class="slds-input"
+                    aria-invalid="true" />
             </div>
             <div class="slds-form-element__help">Example: How do i import csv ?</div>
         </div>
         <div class="slds-grid slds-gutters slds-wrap">
-            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+            <div class="slds-col slds-size_1-of-1">
                 <button id="vector-search"
-                    class="slds-button_stretch slds-button slds-button_outline-brand slds-m-top_medium">Search</button>
+                    class="slds-button_stretch slds-button slds-button_brand slds-m-top_medium">Search</button>
             </div>
-            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+            <!-- <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
                 <button id="llm-search"
-                    class="slds-button_stretch slds-button slds-button_outline-brand slds-m-top_medium">Super-Search</button>
-            </div>
+                    class="slds-button_stretch slds-button slds-button_brand slds-m-top_medium">Super-Search</button>
+            </div> -->
         </div>
-        <div class="slds-card slds-m-top_medium ">
-            <div id="responseContainer" cl>
+        <div id="responseContainer" class="slds-card slds-m-top_medium slds-hide containerDark">
 
-            </div>
         </div>
     </div>
     <script src="script.js"></script>
