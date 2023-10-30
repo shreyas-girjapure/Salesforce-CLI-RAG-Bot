@@ -21,7 +21,7 @@ function updateDarkModeIcon() {
 
 function performSearch() {
     const query = queryInput.value;
-    console.log('here s url '+`${baseUrl}/super-search?query=${encodeURIComponent(query)}`);
+    console.log('here s url '+`${baseUrl}/search?query=${encodeURIComponent(query)}`);
     responseContainer.innerHTML = '';
     noResponseMessage.style.display = 'none';
     loadingSpinner.style.display = 'block';
