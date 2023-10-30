@@ -58,12 +58,13 @@ queryInput.addEventListener('keyup', (event) => {
 });
 
 function handleDarkModeSwitch(event) {
-    console.log('dark mode toggle start');
+    console.log('dark mode toggle start',event.target.value);
+    let innerValue = event.target.innerText;
     toogleModes();
-    if(darkModeIcon.classList.contains('fa-sun')){
-        darkModeIcon.classList.replace('fa-sun','fa-moon')
+    if(innerValue == '🌚'){
+        event.target.innerText = '🌞'
     }else{
-        darkModeIcon.classList.replace('fa-moon','fa-sun')
+        event.target.innerText = '🌚'
     }
 }
 
