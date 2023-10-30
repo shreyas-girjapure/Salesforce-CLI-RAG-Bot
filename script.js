@@ -1,54 +1,41 @@
-const darkModeSwitch = document.getElementById('darkModeSwitch');
-const resultContainer = document.getElementById('resultContainer');
-const responseContainer = document.getElementById('response');
-const noResponseMessage = document.getElementById('noResponseMessage');
 const queryInput = document.getElementById('query');
-const searchBtn = document.getElementById('searchBtn');
-const loadingSpinner = document.querySelector('.loading-spinner');
-const darkModeIcon = document.getElementById('darkModeIcon');
+const responseContainer = document.getElementById('responseContainer');
+const vectorSearchButton = document.getElementById('vector-search');
+const llmSearchButton = document.getElementById('llm-search');
 const baseUrl = 'https://basicauth-znr4.onrender.com';
-let isDarkMode = false;
+let searchMode = 'search';//default
+let isRequestSuccess = false;
 
-darkModeSwitch.addEventListener('change', () => {
-    isDarkMode = !isDarkMode;
-    document.body.classList.toggle('dark-mode');
-    updateDarkModeIcon();
-});
 
-function updateDarkModeIcon() {
-    darkModeIcon.className = isDarkMode ? 'fas fa-sun' : 'fas fa-moon';
+async function performSearch(e) {
+    try {
+        let buttonId = e?.target?.id;        
+        if(buttonId === 'llm-search'){
+            searchMode = 'super-search'
+        }
+        const query = queryInput.value;
+        const finalURL = `${baseUrl}/${searchMode}?query=${encodeURIComponent(query)}`;
+        console.log('here s url ' + finalURL);
+
+        let primaryResponse = await fetch(finalURL);
+        if(primaryResponse.status == '200'){
+            isRequestSuccess = true;
+            let textData = await primaryResponse.text();
+            console.log(textData);
+            console.log(responseContainer)
+            responseContainer.innerHTML = textData;
+        }
+
+    } catch (error) {
+        console.log(error)
+    }
 }
 
-function performSearch() {
-    const query = queryInput.value;
-    console.log('here s url '+`${baseUrl}/search?query=${encodeURIComponent(query)}`);
-    responseContainer.innerHTML = '';
-    noResponseMessage.style.display = 'none';
-    loadingSpinner.style.display = 'block';
-
-    resultContainer.style.display = 'none';
-
-    fetch(`${baseUrl}/search?query=${encodeURIComponent(query)}`)
-        .then(response => response.text())
-        .then(data => {
-            responseContainer.innerHTML = data;
-            resultContainer.style.display = 'block';
-        })
-        .catch(error => {
-            console.error(error);
-            noResponseMessage.style.display = 'block';
-        })
-        .finally(() => {
-            loadingSpinner.style.display = 'none';
-        });
-}
-
-searchBtn.addEventListener('click', performSearch);
+vectorSearchButton.addEventListener('click', performSearch);
+llmSearchButton.addEventListener('click', performSearch);
 
 queryInput.addEventListener('keyup', (event) => {
-    if (event.key === 'Enter') {        
+    if (event.key === 'Enter') {
         performSearch();
     }
 });
-
-updateDarkModeIcon();

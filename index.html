@@ -4,42 +4,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/design-system/2.22.0/styles/salesforce-lightning-design-system.min.css"
+        integrity="sha512-R29Br+fSgWWdKZf/rrEY/bciMESXy1J1I0m4jQ6eDJDSaF1Jj4TE4uoyiIqcM4dkNihG3tKuYAh1JMCcBphpvA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <title>Salesforce CLI Documentation</title>
 </head>
 
-<body class="bg-light dark-mode">
-    <div class="container">
-        <!-- Dark Mode Switch -->
-        <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="darkModeSwitch">
-            <label class="custom-control-label" for="darkModeSwitch"><i id="darkModeIcon" class="fas"></i></label>
+<body class="">
+    <div class="slds-p-around_xx-large">
+
+        <div class="slds-grid">
+            <div class="slds-col">
+                <span class="slds-text-heading_large">Search CLI Docs 🚀</span>
+            </div>
+            <div class="slds-col">
+                <button
+                    class="slds-float_right slds-m-left_xx-small slds-button slds-button_icon slds-button_icon-medium slds-button_icon-border-filled">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+                <button
+                    class="slds-float_right slds-button slds-button_icon slds-button_icon-medium slds-button_icon-border-filled">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button
+                    class="slds-float_right slds-button slds-button_icon slds-button_icon-medium slds-button_icon-border-filled">
+                    <i class="fa-brands fa-github"></i>
+                </button>
+            </div>
         </div>
 
-        <!-- Search Section -->
-        <div class="my-4">
-            <h2>Search CLI Docs 🚀</h2>
-            <div class="form-group mt-4">
-                <label for="query">Search</label>
-                <input type="text" class="form-control" id="query" placeholder="Type your search query here ...">
+        <div class="slds-form-element">
+            <label class="slds-form-element__label slds-m-top_xx-small" id="inline-text-label">Search</label>
+            <div class="slds-form-element__control">
+                <input id="query" type="text" placeholder="Type your inputs here" class="slds-input" aria-invalid="true" />
             </div>
-            <button class="btn btn-primary btn-block" id="searchBtn">Search</button>
-            <div class="loading-spinner mt-4">
-                <i class="fas fa-spinner fa-spin"></i> Loading...
+            <div class="slds-form-element__help">Example: How do i import csv ?</div>
+        </div>
+        <div class="slds-grid slds-gutters slds-wrap">
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+                <button id="vector-search"
+                    class="slds-button_stretch slds-button slds-button_outline-brand slds-m-top_medium">Search</button>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+                <button id="llm-search"
+                    class="slds-button_stretch slds-button slds-button_outline-brand slds-m-top_medium">Super-Search</button>
             </div>
         </div>
+        <div class="slds-card slds-m-top_medium ">
+            <div id="responseContainer" cl>
 
-        <div class="my-4" style="display: none;" id="resultContainer">
-            <h4>Result</h4>
-            <div id="response" class="border p-3 response-container"></div>
-            <div id="noResponseMessage" class="d-none">
-                <h4>No response provided.</h4>
             </div>
         </div>
     </div>
-    <script src="script.js"></script> <!-- Link to the external JavaScript file -->
+    <script src="script.js"></script>
 </body>
 
 </html>
