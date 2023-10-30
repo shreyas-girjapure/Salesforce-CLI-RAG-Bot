@@ -28,7 +28,7 @@ function performSearch() {
 
     resultContainer.style.display = 'none';
 
-    fetch(`${baseUrl}/super-search?query=${encodeURIComponent(query)}`)
+    fetch(`${baseUrl}/search?query=${encodeURIComponent(query)}`)
         .then(response => response.text())
         .then(data => {
             responseContainer.innerHTML = data;
