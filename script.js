@@ -5,6 +5,7 @@ const responseContainer = document.getElementById('responseContainer');
 const vectorSearchButton = document.getElementById('vector-search');
 const llmSearchButton = document.getElementById('llm-search');
 const errorTextElement = document.getElementById('errorText');
+const spinner = document.getElementById('spinner');
 const body = document.querySelector('body');
 
 
@@ -19,6 +20,7 @@ async function performSearch(event) {
         if (buttonId === 'llm-search') {
             searchMode = 'super-search'
         }
+        spinner.classList.toggle('slds-hide');
         const query = queryInput.value;
         responseContainer.classList.add('slds-hide')
 
@@ -32,10 +34,12 @@ async function performSearch(event) {
         } else {
             isRequestSuccess = false;
         }
+        spinner.classList.toggle('slds-hide');
         responseContainer.classList.remove('slds-hide');
         responseContainer.innerHTML = textData;
 
     } catch (error) {
+        spinner.classList.toggle('slds-hide');
         responseContainer.classList.remove('slds-hide');
         responseContainer.innerHTML = `<pre>${error}</pre>`;
         console.log(error)
