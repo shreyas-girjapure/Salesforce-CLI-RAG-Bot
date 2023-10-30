@@ -14,21 +14,22 @@
 </head>
 
 <body class="darkModeRoot">
-    <div class="slds-p-around_medium">
-        <div class="slds-grid">
+    <div class="slds-p-around_large">
+        <div class="slds-grid slds-m-top_x-large">
             <div class="slds-col">
-                <span class="slds-text-heading_large">Search CLI Docs 🚀</span>
+                <h2 class="slds-text-heading_large ">Search CLI Docs 🚀</h2>
             </div>
-            <div class="slds-col">
-                <button id="dark-mode-switch"
-                    class="slds-float_right slds-m-left_xx-small slds-button slds-button_icon slds-button_icon-medium slds-button_icon-border-filled">
-                    <i id="dark-icon" class="fa-solid fa-moon"></i>
-                </button>
+            <!-- <div class="slds-col">
                 <a href="https://github.com/shreyas-girjapure/Salesforce-CLI-RAG-Bot" target="_blank"
-                    class="slds-float_right slds-button slds-button_icon slds-button_icon-medium slds-button_icon-border-filled">
+                    class="slds-float_right ">
                     <i class="fa-brands fa-github"></i>
                 </a>
+            </div> -->
+            <div class="slds-col slds-align-middle">
+                <i id="dark-icon" class="fa-solid fa-moon slds-float_right"></i>
             </div>
+
+
         </div>
 
         <div class="slds-form-element">
@@ -46,7 +47,8 @@
             </div>
         </div>
         <div id="spinner" class="slds-m-top_medium slds-hide">
-            <i class="fas fa-spinner fa-spin"></i><span class="slds-m-left_x-small">Retrieving from vector store...</span>
+            <i class="fas fa-spinner fa-spin"></i><span class="slds-m-left_x-small">Retrieving from vector
+                store...</span>
         </div>
         <div id="responseContainer" class="slds-card slds-m-top_medium slds-hide containerDark">
 

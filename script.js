@@ -49,7 +49,7 @@ async function performSearch(event) {
 vectorSearchButton.addEventListener('click', performSearch);
 llmSearchButton?.addEventListener('click', performSearch);
 
-darkModeSwitch.addEventListener('click', handleDarkModeSwitch);
+darkModeIcon.addEventListener('click', handleDarkModeSwitch);
 
 queryInput.addEventListener('keyup', (event) => {
     if (event.key === 'Enter') {
